@@ -7,8 +7,8 @@ A Binary Search Tree can be of anytype. So we arent limited by the implicitly sp
 class Node <T: Comparable>{
 	var value: T
 	var parent: Node?
-	var leftChild: Node?
-	var rightChild: Node?
+	var leftLeaf: Node?
+	var rightLeaf: Node?
 	
 	init(value: T){
 		self.value = value
