@@ -11,7 +11,7 @@ extension Array{
 class Node <T: Comparable>{
     var value: T
     var parent: Node?
-    var leftChild: Node?
+    var leftLeaf: Node?
     var rightChild: Node?
     
     init(value: T){
@@ -32,11 +32,11 @@ class Node <T: Comparable>{
     
     private func insert(value: T, parent: Node){
         if value < self.value{
-            if let leftChild = leftChild {
+            if let leftChild = leftLeaf {
                 leftChild.insert(value: value, parent: leftChild)
             } else {
-                leftChild = Node(value: value)
-                leftChild?.parent = parent
+                leftLeaf = Node(value: value)
+                leftLeaf?.parent = parent
             }
         } else {
             if let rightChild = rightChild {
@@ -52,7 +52,7 @@ class Node <T: Comparable>{
 extension Node: CustomStringConvertible {
     public var description: String {
         var s = ""
-        if let leftChild = leftChild {
+        if let leftChild = leftLeaf {
             s += "(\(leftChild.description)) <- "
         }
         s += "\(value)"
