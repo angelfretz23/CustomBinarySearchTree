@@ -2,6 +2,12 @@
 
 import UIKit
 
+extension Array{
+    mutating func randomize(){
+        for _ in 0..<10{ sort { (_,_) in arc4random() < arc4random() } }
+    } /* Credit: https: //gist.github.com/ijoshsmith/ */
+}
+
 class Node <T: Comparable>{
     var value: T
     var parent: Node?
@@ -12,7 +18,7 @@ class Node <T: Comparable>{
         self.value = value
     }
     
-    public convenience init(array: [T]){
+    convenience init(array: [T]){
         precondition(array.count > 0)
         self.init(value: array.first!)
         for v in array.dropFirst(){
@@ -57,4 +63,7 @@ extension Node: CustomStringConvertible {
     }
 }
 
+var sortedArray = [1, 2, 3, 4, 5]
+sortedArray.randomize()
+sortedArray
 let tree = Node(value: "M")

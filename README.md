@@ -15,3 +15,18 @@ class Node <T: Comparable>{
 	}
 }
 ```
+
+##Arraying nodes after insert
+Testing by creating a tree with an array of 5 numbers: 1, 2, 3, 4, 5. But the array will be shuffled to get scenerios when the tree is unbalanced. An unbalanced tree is when the absolute value of the height of the right side to the root minus the hight of left side is no greater than 1.
+
+Convenience initializer for the array
+
+```
+convenience init(array: [T]){
+        precondition(array.count > 0)
+        self.init(value: array.first!)
+        for v in array.dropFirst(){
+            insert(value: v, parent: self)
+        }
+    }
+```
